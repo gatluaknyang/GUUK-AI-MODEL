@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+firebase-admin
+python-jose[cryptography]
+passlib[bcrypt]
+pydantic
+openai
