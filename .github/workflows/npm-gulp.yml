@@ -2,16 +2,20 @@ services:
   - type: web
     name: guuk-ai-backend
     env: python
-    buildCommand: pip install -r requirements.txt
+    # Install all required Python dependencies listed in requirements.txt
+    # Using uvicorn as the ASGI server to run the FastAPI application.
+    # Configured to listen on all network interfaces (0.0.0.0) and port 10000.
+    startCommand: uvicorn main:app --host 0.0.0.0 --port 10000
     startCommand: uvicorn main:app --host 0.0.0.0 --port 10000
     envVars:
       - key: FIREBASE_SERVICE_ACCOUNT
-        value: '{"type":"service_account",...}' # minified JSON here
+        value: ${FIREBASE_SERVICE_ACCOUNT_JSON}
       - key: FIREBASE_STORAGE_BUCKET
-        value: guukai.appspot.com
+        value: guuk-ai-model2025.appspot.com
       - key: SECRET_KEY
-        value: your-secret-key
+        value: ${SECRET_KEY}
       - key: OPENAI_API_KEY
-        value: your-openai-api-key
+        value: ${OPENAI_API_KEY}
+      # The URL of the frontend application used for client-side interactions
       - key: FRONTEND_URL
-        value: https://your-frontend-url.vercel.app
+        value: https://guuk-ai-model2025.vercel.app/
