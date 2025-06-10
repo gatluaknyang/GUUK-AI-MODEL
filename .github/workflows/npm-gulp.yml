@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: guuk-ai-backend
+    name: https://guuk-ai-model2025-git-gatluaknyang-patch-1-guuk-ais-projects.vercel.app/
     env: python
     startCommand: uvicorn main:app --host 0.0.0.0 --port 10000
     envVars:
